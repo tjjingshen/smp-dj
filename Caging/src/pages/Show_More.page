@@ -1,0 +1,4 @@
+<apex:page standardController="Account">
+    <apex:relatedList pageSize="2" subject="{!account}" list="Contacts" id="RL1"/>
+    <apex:relatedList pageSize="3" subject="{!account}" list="Contacts" id="RL2"/>
+</apex:page>

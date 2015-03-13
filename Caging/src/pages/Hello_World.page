@@ -1,0 +1,20 @@
+<apex:page >
+<apex:includeScript value="/support/console/28.0/integration.js"/> 
+ <script type="text/javascript">
+        window.onload=function(){
+                if (sforce.console.isInConsole()) 
+                    {
+                        alert("In Console");
+                    }                            
+                 else
+                     {
+                        alert("Outside Console");
+                    }                                      
+                }
+           
+        </script>
+    <apex:outputPanel layout="block" style="font-weight:bold">
+        Hello World!
+    </apex:outputPanel>
+    <apex:iframe src="https://axion.na12.visual.force.com/apex/Hello_World" scrolling="true" id="theIframe" height="50px" width="10%"/>
+</apex:page>

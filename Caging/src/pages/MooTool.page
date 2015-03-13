@@ -1,0 +1,132 @@
+<apex:page standardstylesheets="false" showheader="false"
+sidebar="false" setup="true" >
+
+<apex:stylesheet value="{!URLFOR($Resource.myStyles, 'slider.css')}"/>
+
+<apex:includeScript value="{!$Resource.moo_12}"/>
+
+ <apex:includeScript value="{!$Resource.sl_slider}"/> 
+  
+  <script>
+   window.addEvent('domready', function() {
+		
+		//slider variables for making things easier below
+		var itemsHolder = $('container');
+		var myItems = $$(itemsHolder.getElements('.item'));
+		
+		//controls for slider
+		var theControls = $('controls1');
+		var numNavHolder = $(theControls.getElement('ul'));
+		var thePlayBtn = $(theControls.getElement('.play_btn'));
+		var thePrevBtn = $(theControls.getElement('.prev_btn'));
+		var theNextBtn = $(theControls.getElement('.next_btn'));
+		
+		
+		//create instance of the slider, and start it up		
+		var mySlider = new SL_Slider({
+			slideTimer: 6000,
+			orientation: 'horizontal',      //vertical, horizontal, or none: None will create a fading in/out transition.
+			fade: true,                    //if true will fade the outgoing slide - only used if orientation is != None
+			isPaused: true,
+			container: itemsHolder,
+			items: myItems,
+			numNavActive: true,
+			numNavHolder: numNavHolder,
+			playBtn: thePlayBtn,
+			prevBtn: thePrevBtn,
+			nextBtn: theNextBtn
+		});
+		mySlider.start();
+		
+		
+		//adding a little animated rollover highlight to the play and prev/next buttons
+		var origBkgdColor = thePlayBtn.getStyle('background-color');
+		var newBkgdColor = "#80301D";
+		var btnArray = new Array(thePlayBtn, thePrevBtn, theNextBtn);
+		
+		btnArray.each(function(e, i){
+			e.set('tween', {duration: 350, transition: 'cubic:out', link: 'cancel'});
+			e.addEvents({ 
+				'mouseenter' : function() {
+					this.tween('background-color', newBkgdColor);
+				},
+				'mouseleave' : function() {
+					this.tween('background-color', origBkgdColor);
+				}
+			});
+		});
+					 
+	});
+
+  </script>
+
+
+  
+   <apex:outputPanel layout="block">
+<div id="wrapper">
+	
+	<h1>StoutLabs - Mootools Content (div) Slider Class v 2.0</h1>
+	
+	<p class="linkback"><a href="http://stoutlabs.com/blog/view/updated_mootools_content_slider_class_v2/">&lt; Go back to related blog post</a></p>
+	
+	
+	
+	
+	<h2>Horizontal Slide - With Fade</h2>
+	
+	<div id="container">
+		
+		<div class="item">
+			<h3>Item 1 Title</h3>
+			<p>Cras porta arcu ac felis. Curabitur est libero, sollicitudin sed, tempus eu, semper eget, eros. In in 
+			tortor vitae justo fringilla vestibulum. Proin arcu dolor, ullamcorper tristique, placerat nec, scelerisque 
+			placerat, massa. Ut enim purus, sollicitudin et, pretium ac, porttitor eget, sapien. Nulla et erat.</p>
+			<p><img src="{!$Resource.fpo_img}" alt="tester image" /></p>
+		</div>
+		
+		<div class="item">
+			<h3>Item 2 Title</h3>
+			<p>Fusce aliquam blandit elit. Suspendisse lectus massa, ultricies sed, hendrerit in, tempor non, nunc.</p>
+		</div>
+		
+		<div class="item">
+			<h3>Item 3 Title</h3>
+			<p>Aenean neque. Mauris elementum sem vel nisi. Quisque est turpis, gravida non, porta id, varius nec, pede. Mauris tincidunt nisl a nulla 
+			condimentum commodo. Phasellus sem. Aenean enim dolor, facilisis quis, viverra ac, molestie sit amet, lectus. In porttitor laoreet massa.</p>
+			<p>Proin arcu dolor, ullamcorper tristique, placerat nec, scelerisque placerat, massa. Ut enim purus.</p>
+		</div>
+		
+		<div class="item">
+			<h3>Item 4 Title</h3>
+			<p>This is item four&rsquo;s text. Item text here.  Lorem ipsum dolor.</p>
+			<p><img src="{!$Resource.fpo_img}" alt="tester image" /></p>
+		</div>
+		
+		<div class="item">
+			<h3>Item 5 Title</h3>
+			<p>Annnd item 5&rsquo;s text is here. Item text here.  Lorem ipsum dolor.</p>
+		</div>
+		
+	</div><!-- end container div -->
+	
+	<div id="controls1">
+		<div class="prev_btn">&lt; prev</div>
+		<div class="next_btn">next &gt;</div>
+		<div class="play_btn"></div>		
+		<div class="num_nav"><ul></ul></div>
+	</div>
+	
+	
+	<div id="versions">
+		<h3>Example Versions: </h3>
+		<a href="index.htm" class="activenav">horizontal, with all options</a> | <a href="vert.htm">vertical, with prev / next only</a> | <a href="fade.htm">fade only, with no controls</a>
+	</div>
+	
+</div>
+<!-- end wrapper div -->
+
+
+
+</apex:outputPanel>
+
+ </apex:page>

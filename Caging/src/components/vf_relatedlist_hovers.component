@@ -1,0 +1,75 @@
+<apex:component >
+<div class="RLPanelShadow"><div class="RLPanel" id="RLPanel" onblur="sfdcPage.relatedListPanel.hideRLDelayed(null, 100)" onfocus="sfdcPage.relatedListPanel.showRL()" onmouseout="sfdcPage.relatedListPanel.hideRLDelayed(null, 100)" onmouseover="sfdcPage.relatedListPanel.showRL()"><iframe frameborder="0" id="RLPanelFrame" name="RLPanelFrame" src="/emptyHtmlDoc.html" title="Hidden Frame - Ignore"></iframe></div></div><div class="listHoverLinks"><span class="invisibleMinHeight">|</span></div>
+
+<script type="text/javascript">
+try { sfdcPage.registerRelatedListPanel('RLPanel',false);} catch(e) {}
+</script>
+
+<script type="text/javascript">
+function twistSection(twisty, sectionId) {
+var parentDiv = twisty;
+
+while (parentDiv.tagName != 'DIV') { parentDiv = parentDiv.parentNode; }
+
+var headerId = sectionId || (parentDiv.id.split('_'))[1];
+var div = parentDiv.nextSibling;
+var elemWasOn = false;
+
+if (div.style.display != 'none') {
+div.style.display = 'none';
+twisty.className ='showListButton';
+twisty.alt = twisty.title = 'Show Section - '+twisty.name;
+elemWasOn = true;
+} else {
+div.style.display = 'block';
+twisty.className = 'hideListButton';
+twisty.alt = twisty.title = 'Hide Section - '+twisty.name;
+}
+
+addTwistCookie('Twister', headerId, elemWasOn);
+}
+
+var registeredSections = new Array();
+
+function registerTwistableSection(headerId, mainTableId) {
+var obj = new Object();
+obj.headerId = headerId;
+obj.mainTableId = mainTableId;
+registeredSections[registeredSections.length] = obj;
+}
+
+function twistAllSections(on) {
+for (var i = 0; i < registeredSections.length; i++) {
+var obj = registeredSections[i];
+var img;
+
+img = document.getElementById('img_' + obj.headerId);
+
+if (on && 'showListButton' == img.className) {
+twistSection(img, obj.headerId, obj.mainTableId);
+} else if (!on && 'hideListButton' == img.className) {
+twistSection(img, obj.headerId, obj.mainTableId);
+}
+}
+}
+
+function toggleSection(headerId, on){
+var sectionHead = document.getElementById('head_'+headerId+'_ep_j_id0_j_id1_j_id2');
+var body = sectionHead.nextSibling;
+var disp = on ? 'block' : 'none';
+sectionHead.style.display = disp;
+body.style.display = disp;
+}
+
+function registerTwistableSections_ep_j_id0_j_id1_j_id2() {
+registerTwistableSection('01B50000003WfZA', 'ep_j_id0_j_id1_j_id2');
+registerTwistableSection('01B50000003WfZB', 'ep_j_id0_j_id1_j_id2');
+registerTwistableSection('01B50000003WfZD', 'ep_j_id0_j_id1_j_id2'); 
+registerTwistableSection('01B50000003WfZG', 'ep_j_id0_j_id1_j_id2'); 
+registerTwistableSection('01BQ0000000OuMD', 'ep_j_id0_j_id1_j_id2'); 
+registerTwistableSection('01B50000003WfZJ', 'ep_j_id0_j_id1_j_id2'); 
+}
+
+registerTwistableSections_ep_j_id0_j_id1_j_id2();
+</script>
+</apex:component>

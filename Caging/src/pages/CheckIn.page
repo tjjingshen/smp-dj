@@ -1,0 +1,50 @@
+<apex:page controller="checkinController" showHeader="false" sidebar="false"
+setup="true" standardStylesheets="false" id="ServiceForm">
+    <!-- apex:stylesheet value="{!URLFOR($Resource.myStyles, 'forms/css/Screen.css')}"
+    /-->
+    
+    <head>
+        <meta name="viewport" content="width = device-width" />
+        <script type="text/javascript" src="/mobileclient/api/mobileforce.js">
+        </script>
+        <script>
+            function updateLocation(lat, lon) {
+        document.getElementById('{!$Component.form.block.longitude}').value = lon;
+        document.getElementById('{!$Component.form.block.latitude}').value = lat;
+    }
+
+    function getLocation() {
+        mobileforce.device.getLocation(updateLocation);
+        //work around required for BB
+        if (window.blackberry) setInterval("getLocation()", 10000);
+        return false;
+    }
+        </script>
+    </head>
+    <div id="container">
+        <apex:form id="checkInform" styleclass="first">
+            <apex:pageBlock id="checkInlogic">
+                Bar Code #:
+                <br />
+                <apex:inputField value="{!checkIn.Bar_Code_No__c}" />
+                <br />
+                Latitude:
+                <br />
+                <apex:inputField value="{!checkIn.Latitude__c}" id="latitude" />
+                <br />
+                Longitude:
+                <br />
+                <apex:inputField value="{!checkIn.Longitude__c}" id="longitude" />
+                <br />
+                 Terminal:
+                <br />
+                <apex:inputField value="{!checkIn.Terminal__c}" id="terminal" />
+                <br />
+                <button type="button" value="GPS" onclick="getLocation();">
+                    Get location
+                </button>
+                <apex:commandButton action="{!save}" value="Save!" />
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page standardController="Location_Deal__c" recordSetvar="accounts" extensions="tenPageSizeExt" standardStyleSheets="false" showHeader="false" cache="false">
+
+<style type="text/css">
+.background { background-image:url('http://goo.gl/ss07M'); } 
+.italicText { font-style:italic;  background-color:#b0c4de}
+.body {background-color:#b0c4de;}
+
+</style>
+    
+    
+      
+    
+    
+  <apex:pageBlock >
+  <apex:form id="theForm" styleClass="body">
+                 
+    
+    <apex:pageBlockSection >
+    
+      
+                				<apex:outputText value="Your Deals"/>                 	           
+      								<apex:dataList var="a" value="{!accounts}"  >     			 	
+      			 					<apex:outputText value="{!a.name}" styleClass="italicText"   />
+      							</apex:dataList>
+    
+    
+    
+    </apex:pageBlockSection>
+    
+    <apex:panelGrid columns="2">
+      <apex:commandLink action="{!previous}">Previous</apex:commandlink>
+      <apex:commandLink action="{!next}">Next</apex:commandlink>
+    </apex:panelGrid>
+  
+  </apex:form> 
+  </apex:pageBlock>
+
+
+</apex:page>

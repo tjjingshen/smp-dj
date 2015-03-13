@@ -1,0 +1,18 @@
+<apex:page standardController="case">
+<style type="text/css">
+[id*=nodisp] {display:none;}
+</style>
+
+<!--Reference to Hover Component-->
+<c:vf_relatedlist_hovers />
+
+ <!--Display the standard detail page of the case object w/o related lists-->
+    <apex:detail relatedList="false" relatedListHover="false" title="true" />
+
+    <!--Add related lists to the page-->
+    <apex:relatedList id="OpenActivitieslist" list="OpenActivities" />
+    <apex:relatedList id="Activitieslist" list="ActivityHistories" />
+    <!--apex:relatedList id="attachmentslist" list="Attachments" /-->
+    <apex:relatedList id="relatedcaseslist" list="Cases" />
+    <!--apex:relatedList id="TDFlist" list="Ticket_Data_Forms__r" /-->
+</apex:page>

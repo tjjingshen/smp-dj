@@ -1,0 +1,44 @@
+<apex:page id="thePage" standardController="Account">
+    <apex:includeScript value="/support/console/28.0/integration.js" />
+    <apex:includeScript value="/soap/ajax/28.0/connection.js" />
+    <apex:includeScript value="/soap/ajax/28.0/apex.js" />
+    
+    <script type="text/javascript">
+                
+        function getTab() {
+            //First find the ID of the current primary tab to close it
+            sforce.console.getEnclosingPrimaryTabId(getTabId);
+                          }
+        
+            var getTabId = function getTabId(result) 
+                {
+                    var tabId = result.id;  
+                    alert(tabId);
+                }
+
+     
+        function setTabIcon() {
+           if (sforce.console.isInConsole()) {
+                    var tabId = sforce.console.getEnclosingPrimaryTabId();
+                    //alert("In Function : setTabIcon");
+                    sforce.console.setTabIcon('https://na12.salesforce.com/img/icon/perAccounts32.png','scc-pt-0',null);
+                                             }
+                                }   
+
+        
+            var previousOnload = window.onload;
+            window.onload = function () {
+                if (previousOnload) {
+                    previousOnload();
+                }
+                setTimeout('setTabIcon()', '500');
+            }
+
+    </script>
+
+    <apex:pageBlock title="Simple Title">
+        <b>Hello <i>{!$User.FirstName}</i>.</b>
+    </apex:pageBlock>
+    <apex:detail subject="{!Account.Id}" relatedList="true" relatedListHover="true" />
+
+</apex:page>
