@@ -1,0 +1,21 @@
+{
+    "CustomJavaScript": "{}",
+    "ElementTypeComponentMapping": "{\"ElementTypeToHTMLTemplateList\":[]}",
+    "IsIntegrationProcedure": true,
+    "IsMetadataCacheDisabled": false,
+    "IsOmniScriptEmbeddable": false,
+    "IsTestProcedure": false,
+    "IsWebCompEnabled": false,
+    "Language": "Procedure",
+    "Name": "TEST",
+    "OmniProcessElement": "TEST_TEST_Element_RemoteAction1.json",
+    "OmniProcessKey": "TEST_TEST",
+    "OmniProcessType": "Integration Procedure",
+    "PropertySetConfig": "TEST_TEST_PropertySetConfig.json",
+    "SubType": "TEST",
+    "Type": "TEST",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcess",
+    "VlocityRecordSourceKey": "OmniProcess/TEST/TEST/Procedure",
+    "WebComponentKey": "c8cd307b-b3d3-1280-9d11-84a5bcd50940"
+}
