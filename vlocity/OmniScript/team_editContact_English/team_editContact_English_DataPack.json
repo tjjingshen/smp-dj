@@ -1,0 +1,18 @@
+{
+    "ElementTypeComponentMapping": "{\"ElementTypeToHTMLTemplateList\":[]}",
+    "IsIntegrationProcedure": false,
+    "IsMetadataCacheDisabled": false,
+    "IsOmniScriptEmbeddable": false,
+    "IsTestProcedure": false,
+    "IsWebCompEnabled": true,
+    "Language": "English",
+    "Name": "Team Starter Edit Contact",
+    "OmniProcessType": "OmniScript",
+    "PropertySetConfig": "team_editContact_English_PropertySetConfig.json",
+    "SubType": "editContact",
+    "Type": "team",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcess",
+    "VlocityRecordSourceKey": "OmniProcess/team/editContact/English",
+    "WebComponentKey": "7ad85f3a-41c1-5b4e-99a6-9ec573ac2e3a"
+}
